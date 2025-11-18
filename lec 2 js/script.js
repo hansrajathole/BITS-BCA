@@ -3,8 +3,13 @@ console.log("hello guysssss");
 
 
 var a = 10
-var str = 'hello'
-var bool = true
+let str = 'hello'
+const bool = true
+
+function greet(name) {
+    console.log(`hello, good morning ${name}`);
+    
+}
 
 console.log(typeof a);
 console.log(typeof str);
