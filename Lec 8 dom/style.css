@@ -1,0 +1,33 @@
+
+
+.box {
+    height: 300px;
+    width: 300px;
+    background-color: aqua;
+    border-radius: 10px;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html , body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dark {
+    background-color: rgb(58, 57, 57);
+    color: aliceblue;
+
+}
+
+
+button {
+    padding: 7px 10px;
+}
