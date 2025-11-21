@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html , body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: sans-serif;
+
+}
+
+
+img {
+    height: 400px;
+    width: 300px;
+    border-radius: 15px;
+}
+
+.pop-up {
+    height: 80%;
+    width: 80%;
+    background-color: rgb(115, 102, 102);
+    padding: 10px;
+    position: absolute;
+    display: none;
+}
+
+h1 {
+    text-align: end;
+    color: red;
+    cursor: pointer;
+}
+
+button {
+    padding: 5px;
+    font-size: large;
+
+}
