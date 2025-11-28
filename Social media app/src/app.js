@@ -10,6 +10,6 @@ app.use(express.urlencoded({extended : true}))
 
 app.use("/", authRoute)
 app.use("/user", userRoute )
-
+// app.use("/api/v1/post", )
 
 module.exports = app

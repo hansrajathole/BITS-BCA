@@ -1,24 +1,12 @@
 
 const express = require("express")
+const userControllers = require("../controllers/user.controller")
 
 const router = express.Router()
 
 
 
-router.post("/register", (req, res)=>{
-
-    const {username , email , password } = req.body
-
-    console.log("username :", username);
-    console.log("email :", email);
-    console.log("password :", password);
-    
-
-    // console.log("query wala data ",req.query);
-    // console.log("body wala data ",req.body);
-
-    res.status(201).json({ message : "user register successfuly"})  
-})
+router.post("/register",userControllers.registerController)
 
 
 router.get("/:userId",( req, res )=>{
