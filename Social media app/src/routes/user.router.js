@@ -4,6 +4,13 @@ const userControllers = require("../controllers/user.controller")
 
 const router = express.Router()
 
+router.use((req, res, next)=>{
+    console.log("router level middleware chala");
+    next()
+})
+
+
+
 
 
 router.post("/register",userControllers.registerController)
