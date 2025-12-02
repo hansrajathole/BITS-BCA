@@ -8,16 +8,16 @@ const morgan = require("morgan")
 
 
 
-app.use((req, res, next)=>{
-    console.log("middleware 1 chala");
-    next()
-})
+// app.use((req, res, next)=>{
+//     console.log("middleware 1 chala");
+//     next()
+// })
 
 
-app.use((req, res, next)=>{
-    console.log("application level wala middleware 2 chala");
-    next()
-})
+// app.use((req, res, next)=>{
+//     console.log("application level wala middleware 2 chala");
+//     next()
+// })
 
 
 

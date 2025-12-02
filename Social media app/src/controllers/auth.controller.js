@@ -1,7 +1,7 @@
 module.exports.indexController = (req ,res)=>{
 
-    let name = "hansraj"
-    res.render('index',{name})
+
+    res.render('home')
 }   
 
 

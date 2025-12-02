@@ -8,6 +8,83 @@ html , body{
     width: 100%;
 }
 
-h1 {
-    background-color: red;
+main {
+    height: 100%;
+    width: 100%;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+}
+
+main .container {
+    height: 100%;
+    width: 500px;
+    background-color: rgb(176, 175, 175);
+    border: 1px solid black;
+    padding: 8px;
+    position: relative;
+}
+
+main .container .tools {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0%;
+
+}
+
+main .container .tools a {
+
+    text-decoration: none;
+    color: black;
+}
+
+main .container .tools i {
+    font-size: 2rem;
+}
+
+
+.login {
+    height: 100%;
+    width: 100%;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.login form {
+    border: 1px solid black;
+    padding: 15px;
+    border-radius: 1em;
+    background-color: rgb(177, 177, 177);
+
+}
+.login form input {
+    width: 100%;
+    font-size: 1.3em;
+    padding: 3px 7px;
+    border-radius: 5px;
+
+}
+
+.login form .btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.login form .btn button {
+    padding: 5px 8px;
+    font-size: large;
+    background-color: rgb(78, 79, 174);
+    border-radius: 5px;
+    color: white;
+}
+
+.login form h1 {
+    text-align: center;
 }

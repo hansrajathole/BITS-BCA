@@ -12,18 +12,10 @@ router.use((req, res, next)=>{
 
 
 
-
+router.get("/login", userControllers.getLoginController)
+router.get("/register",userControllers.getRegisterController)
 router.post("/register",userControllers.registerController)
 
-
-router.get("/:userId",( req, res )=>{
-    // console.log("params wala data",req.params);
-
-    const {userId} = req.params
-    console.log(req.query);
-    console.log(req.body);
-    
-})
 
 
 module.exports = router
