@@ -13,6 +13,7 @@ router.use((req, res, next)=>{
 
 
 router.get("/login", userControllers.getLoginController)
+router.post("/login", userControllers.loginController)
 router.get("/register",userControllers.getRegisterController)
 router.post("/register",userControllers.registerController)
 

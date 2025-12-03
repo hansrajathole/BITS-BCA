@@ -5,7 +5,8 @@ const jwt = require("jsonwebtoken")
 
 module.exports.getRegisterController = (req, res)=>{
     try {
-        res.render("register")
+        let error = null
+        res.render("register", {error})
     } catch (error) {
           console.log(error);
         res.status(500).json({message : "Internal server error", error : error.message })
@@ -20,21 +21,23 @@ module.exports.registerController = async (req, res)=>{
        let { username , email , password } = req.body
 
         if(!username){
-            return res.status(400).json({message : "username is required"})
+            req.flash("error","username is required")    
+            return res.redirect("/user/register")
         }
         if(!email){
-            return res.status(400).json({message : "email is required"})
+            return res.render("register", {error : "email is required"})
+
         }
         if(!password){
-            return res.status(400).json({message : "password is required"})
+            return res.render("register", {error : "password is required"})
         }
 
 
        let user = await userModel.findOne({email})
 
        if(user){
-            return res.status(400).json({message : "user already axist"})
-       }
+            return res.render("register", {error : "user already exist"})
+      }
 
        let hashedPass = await bcrypt.hash(password, 10)
 
@@ -45,7 +48,9 @@ module.exports.registerController = async (req, res)=>{
         
         })
 
-        res.redirect("/")
+        req.flash("error", "user register successfully")
+
+        res.redirect("/user/login")
 
 
     } catch (error) {
@@ -58,7 +63,8 @@ module.exports.registerController = async (req, res)=>{
 
 module.exports.getLoginController = (req, res)=>{
     try {
-        res.render("login")
+        let error = null
+        res.render("login", {error})
     } catch (error) {
           console.log(error);
         res.status(500).json({message : "Internal server error", error : error.message })
@@ -72,23 +78,25 @@ module.exports.loginController = async (req, res) => {
         let {email , password} = req.body
 
         if(!email){
-            res.redirect("/user/login")
+           return res.render("login", {error : "email is required"})
         }
         if(!password){
-            res.redirect("/user/login")
+           return res.render("login", {error : "password is required"})
+
         }
 
         let user = await userModel.findOne({email})
 
         if(!user){
-            res.redirect("/user/register")
+           return res.render("login",{error : "invalid credintial"})
         }
 
 
         let isMatch = await bcrypt.compare(password , user.password )
 
         if(!isMatch){
-            res.redirect("/user/login")
+           return res.render("login",{error : "invalid credintial"})
+
         }
 
         let token = jwt.sign({
@@ -96,7 +104,10 @@ module.exports.loginController = async (req, res) => {
             email : user.email
         }, "secret-key")
 
-        res.redirect("/")
+        console.log(token);
+        
+        req.flash("success", "login successfully")
+        return res.redirect("/")
 
         
     } catch (error) {

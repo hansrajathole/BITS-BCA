@@ -2,6 +2,10 @@
     <div class="login">
         <form action="/user/register" method="post">
             <br>
+             <% if(error && error.length > 0){ %>
+                <p id="error"><%= error  %></p>
+            <% } %>
+            <br>
             <h1>Register Here</h1>
             <br>
             <label for="username">Username :</label>

@@ -50,6 +50,8 @@ main .container .tools i {
     width: 100%;
     background-color: gray;
     display: flex;
+    flex-direction: column;
+    gap: 10px;
     justify-content: center;
     align-items: center;
 }
@@ -69,7 +71,16 @@ main .container .tools i {
     border-radius: 5px;
 
 }
-
+.login form #error {
+    color: red;
+    text-align: center;
+}
+#toast {
+    background-color: rgb(74, 200, 74);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
 .login form .btn {
     width: 100%;
     display: flex;

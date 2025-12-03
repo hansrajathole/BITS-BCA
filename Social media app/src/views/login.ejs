@@ -1,6 +1,15 @@
 <%- include("partial/header") %>
     <div class="login">
-        <form action="">
+         <% if(error && error.length > 0){ %>
+               <div id="toast">
+                <%= success  %>
+               </div>
+            <% } %>
+        <form action="/user/login" method="post">
+            <br>
+           <% if(error){ %>
+                <p id="error"><%= error  %></p>
+            <% } %>
             <br>
             <h1>Login Here</h1>
             <br>
