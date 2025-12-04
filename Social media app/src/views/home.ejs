@@ -2,10 +2,14 @@
 <main>
     <div class="container">
 
+        <% if(success && success.length > 0 ){ %>
+             <div id="toast">
+                <%= success  %>
+               </div>
+        <% } %>
 
 
-
-<%- include("partial/tools.ejs") %>
+<%- include("partial/tools.ejs", {user}) %>
 
     </div>
 </main>

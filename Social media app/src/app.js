@@ -7,19 +7,9 @@ const app = express()
 const morgan = require("morgan")
 const session = require("express-session")
 const flash = require("connect-flash")
+const cookieParser = require("cookie-parser")
 
 
-
-// app.use((req, res, next)=>{
-//     console.log("middleware 1 chala");
-//     next()
-// })
-
-
-// app.use((req, res, next)=>{
-//     console.log("application level wala middleware 2 chala");
-//     next()
-// })
 
 app.use(session({
     secret : "secret-key",
@@ -28,6 +18,7 @@ app.use(session({
 }))
 
 app.use(flash())
+app.use(cookieParser())
 
 
 app.use((req, res, next)=>{

@@ -21,8 +21,8 @@ module.exports.registerController = async (req, res)=>{
        let { username , email , password } = req.body
 
         if(!username){
-            req.flash("error","username is required")    
-            return res.redirect("/user/register")
+                
+            return res.render("register", {error : "username is required"})
         }
         if(!email){
             return res.render("register", {error : "email is required"})
@@ -48,7 +48,7 @@ module.exports.registerController = async (req, res)=>{
         
         })
 
-        req.flash("error", "user register successfully")
+        req.flash("success", "user register successfully")
 
         res.redirect("/user/login")
 
@@ -107,6 +107,13 @@ module.exports.loginController = async (req, res) => {
         console.log(token);
         
         req.flash("success", "login successfully")
+
+
+        res.cookie("token", token , {
+            httpOnly : true,
+            secure : false,
+        })
+        
         return res.redirect("/")
 
         
@@ -118,6 +125,14 @@ module.exports.loginController = async (req, res) => {
 }
 
 
+module.exports.logoutController = async (req , res) => {
+    try {
+        res.clearCookie("token")
+        res.redirect("/user/login")
+    } catch (error) {
+        res.redirect("/user/login", {error : error.message})
+    }
+}
 
 
 // module.exports = {
