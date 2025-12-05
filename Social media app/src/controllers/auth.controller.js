@@ -5,13 +5,13 @@ const jwt = require("jsonwebtoken")
 module.exports.indexController = async (req ,res)=>{
 
    try {
-        // let token = req.cookies.token
+        let token = req.cookies.token
         
         let user = null
-        // if(token){
-        // let decoded = jwt.verify(token, "secret-key")
-        // user =  await userModel.findById(decoded.id)
-        // }
+        if(token){
+        let decoded = jwt.verify(token, "secret-key")
+        user =  await userModel.findById(decoded.id)
+        }
 
         res.render('home' , {user})
    } catch (error) {

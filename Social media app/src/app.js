@@ -2,14 +2,17 @@
 const express = require("express")
 const authRoute = require("./routes/auth.router")
 const userRoute = require("./routes/user.router")
+const postRoute = require("./routes/post.routes")
 const path = require("path")
 const app = express()
 const morgan = require("morgan")
 const session = require("express-session")
 const flash = require("connect-flash")
 const cookieParser = require("cookie-parser")
+require("dotenv").config()
 
 
+console.log(process.env.public_key);
 
 app.use(session({
     secret : "secret-key",
@@ -39,6 +42,6 @@ app.use(express.static(path.join(__dirname,"../public")))
 
 app.use("/", authRoute)
 app.use("/user", userRoute )
-// app.use("/api/v1/post", )
+app.use("/post",postRoute )
 
 module.exports = app
