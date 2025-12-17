@@ -1,11 +1,11 @@
 
-
+const config = require("../config/config")
 var ImageKit = require("imagekit");
 
 var imagekit = new ImageKit({
-    publicKey : process.env.public_key,
-    privateKey : process.env.private_key,
-    urlEndpoint : process.env.urlEndPoint
+    publicKey : config.public_key,
+    privateKey : config.privateKey,
+    urlEndpoint : config.urlEndpoint
 });
 
 

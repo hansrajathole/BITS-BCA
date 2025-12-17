@@ -9,10 +9,8 @@ const morgan = require("morgan")
 const session = require("express-session")
 const flash = require("connect-flash")
 const cookieParser = require("cookie-parser")
+const config = require("./config/config")
 require("dotenv").config()
-
-
-console.log(process.env.public_key);
 
 app.use(session({
     secret : "secret-key",

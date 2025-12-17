@@ -2,6 +2,7 @@
 const userModel = require("../models/user.model")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
+const config = require("../config/config")
 
 module.exports.getRegisterController = (req, res)=>{
     try {
@@ -17,7 +18,7 @@ module.exports.getRegisterController = (req, res)=>{
 
 module.exports.registerController = async (req, res)=>{
     try {
-        
+
        let { username , email , password } = req.body
 
         if(!username){
@@ -66,7 +67,7 @@ module.exports.getLoginController = (req, res)=>{
         let error = null
         res.render("login", {error})
     } catch (error) {
-          console.log(error);
+        console.log(error);
         res.status(500).json({message : "Internal server error", error : error.message })
         
     }
@@ -76,6 +77,9 @@ module.exports.loginController = async (req, res) => {
     try {
 
         let {email , password} = req.body
+
+
+        
 
         if(!email){
            return res.render("login", {error : "email is required"})
@@ -102,9 +106,9 @@ module.exports.loginController = async (req, res) => {
         let token = jwt.sign({
             id : user._id,
             email : user.email
-        }, "secret-key")
+        }, config.JWT_SECRET)
 
-        console.log(token);
+
         
         req.flash("success", "login successfully")
 
@@ -119,8 +123,7 @@ module.exports.loginController = async (req, res) => {
         
     } catch (error) {
         console.log(error);
-        res.status(500).json({message : "Internal server error", error : error.message })
-       
+        res.send({error : error})
     }
 }
 

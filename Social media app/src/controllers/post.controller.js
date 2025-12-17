@@ -1,5 +1,7 @@
 
-// const imagekit = require("../services/imagekit.service")
+const imagekit = require("../services/imagekit.service")
+const postModel = require("../models/post.model")
+
 
 module.exports.getCreatePostController = async (req, res) => {
     try {
@@ -15,11 +17,25 @@ module.exports.getCreatePostController = async (req, res) => {
 
 module.exports.postCreateController = async (req , res) => {
     try {
-        req.file
-        console.log(req.file);
+        let media = req.file
+       
+        const authorId = req.userId
+        
+        const result = await  imagekit.upload({
+            file : media.buffer,
+            fileName : media.originalname,
+            isPrivateFile : false,
+            isPublished : true
+        })
+
+
+        let mediaUrl = result.url
         
 
-        
+        const post = await postModel.create({
+            author : authorId,
+            media : mediaUrl
+        })
 
         req.flash("success", "post created successully")
         res.redirect("/")

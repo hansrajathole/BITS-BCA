@@ -1,6 +1,7 @@
 
 const jwt = require("jsonwebtoken")
 const userModel = require("../models/user.model")
+const config = require("../config/config")
 
 module.exports.protectedRoute = async (req , res , next) => {
     try {
@@ -11,7 +12,7 @@ module.exports.protectedRoute = async (req , res , next) => {
         return res.redirect("/user/login")
        }
 
-      const decoded =  jwt.verify(token , "secret-key")
+      const decoded =  jwt.verify(token , config.JWT_SECRET)
 
       const user =  await userModel.findById(decoded.id)
 

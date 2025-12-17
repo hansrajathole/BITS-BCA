@@ -12,7 +12,7 @@ const postSchema = mongoose.Schema({
     },
     caption : {
         type : String,
-        required : true
+        // required : true
     }
 }, {timestemp : true})
 
