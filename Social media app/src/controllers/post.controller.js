@@ -1,6 +1,7 @@
 
 const imagekit = require("../services/imagekit.service")
 const postModel = require("../models/post.model")
+const { generateCaption} = require("../services/ai.service")
 
 
 module.exports.getCreatePostController = async (req, res) => {
@@ -9,7 +10,7 @@ module.exports.getCreatePostController = async (req, res) => {
         res.render("createPost")
 
     } catch (error) {
-        req.flass("error", error.message)
+        req.flash("error", error.message)
         res.redirect("/user/login")
     }
 }
@@ -18,7 +19,23 @@ module.exports.getCreatePostController = async (req, res) => {
 module.exports.postCreateController = async (req , res) => {
     try {
         let media = req.file
-       
+               
+        if(!media){
+
+           req.flash("error", "image is required")
+           return res.redirect("/post/createpost")
+        }
+
+        const caption =  await generateCaption(media.buffer)
+        console.log(caption);
+        
+        if(!caption){
+            console.log(caption);
+            
+           req.flash("error", "server side error")
+           return res.redirect("/post/createpost")
+        }
+        
         const authorId = req.userId
         
         const result = await  imagekit.upload({
@@ -34,13 +51,14 @@ module.exports.postCreateController = async (req , res) => {
 
         const post = await postModel.create({
             author : authorId,
-            media : mediaUrl
+            media : mediaUrl,
+            caption : caption
         })
 
         req.flash("success", "post created successully")
         res.redirect("/")
     } catch (error) {
-        req.flass("error", error.message)
-        res.redirect("/user/login")
+        req.flash("error", error.message)
+       return  res.redirect("/user/login")
     }
 }

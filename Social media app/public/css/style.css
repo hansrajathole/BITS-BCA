@@ -94,6 +94,7 @@ main .container .tools i {
     background-color: rgb(78, 79, 174);
     border-radius: 5px;
     color: white;
+    cursor: pointer;
 }
 
 .login form h1 {

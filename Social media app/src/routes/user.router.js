@@ -5,10 +5,10 @@ const {protectedRoute} = require("../middleware/protected")
 
 const router = express.Router()
 
-router.use((req, res, next)=>{
-    console.log("router level middleware chala");
-    next()
-})
+// router.use((req, res, next)=>{
+//     console.log("router level middleware chala");
+//     next()
+// })
 
 
 

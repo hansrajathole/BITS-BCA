@@ -112,7 +112,7 @@ module.exports.loginController = async (req, res) => {
         
         req.flash("success", "login successfully")
 
-
+        
         res.cookie("token", token , {
             httpOnly : true,
             secure : false,

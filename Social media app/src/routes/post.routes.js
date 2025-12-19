@@ -8,6 +8,6 @@ const upload = multer({storage : storage  })
 const router = express.Router()
 
 router.get("/createpost", protectedRoute , postControllers.getCreatePostController)
-router.post("/createpost", upload.single("media") , protectedRoute , postControllers.postCreateController)
+router.post("/createpost",  protectedRoute ,upload.single("media") , postControllers.postCreateController)
 
 module.exports = router

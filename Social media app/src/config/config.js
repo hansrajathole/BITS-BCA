@@ -8,7 +8,8 @@ const _config = {
     urlEndpoint : process.env.urlEndPoint,
     PORT : process.env.PORT,
     MONGO_URL : process.env.MONGO_URL,
-    JWT_SECRET : process.env.JWT_SECRET
+    JWT_SECRET : process.env.JWT_SECRET,
+    aiApiKey : process.env.aiApiKey
 }
 
 

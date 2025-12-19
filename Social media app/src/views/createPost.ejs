@@ -1,6 +1,9 @@
 <%- include("partial/header.ejs") %>
 <div class="login">
     <form action="/post/createpost" enctype="multipart/form-data" method="post">
+        <% if(error){ %>
+                <div id="error"><%= error %></div>
+            <% } %>
         <br>
         <h1>create Post</h1>
         <br>
