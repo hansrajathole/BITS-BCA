@@ -7,7 +7,9 @@
                 <%= success  %>
                </div>
         <% } %>
-
+    <div class="posts">
+        <%- include("partial/post.ejs" ,{postData}) %>
+    </div>
 
 <%- include("partial/tools.ejs", {user}) %>
 

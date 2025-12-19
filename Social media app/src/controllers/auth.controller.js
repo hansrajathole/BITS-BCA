@@ -1,5 +1,7 @@
 const config = require("../config/config")
 const userModel = require("../models/user.model")
+const postModel = require("../models/post.model")
+
 const jwt = require("jsonwebtoken")
 
 
@@ -13,8 +15,11 @@ module.exports.indexController = async (req ,res)=>{
         let decoded = jwt.verify(token,config.JWT_SECRET)
         user =  await userModel.findById(decoded.id)
         }
+        const postData = await postModel.find().populate("author", "username avatar")
 
-        res.render('home' , {user})
+        console.log(postData);
+        
+        res.render('home' , {user , postData})
    } catch (error) {
           console.log(error);
           

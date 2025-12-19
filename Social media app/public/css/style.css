@@ -26,12 +26,14 @@ main .container {
 }
 
 main .container .tools {
-    width: 100%;
+    width: 97%;
     display: flex;
     justify-content: space-around;
     position: absolute;
     bottom: 0%;
-
+    background: gray;
+    border: 1px solid black;
+    padding: 5px ;
 }
 
 main .container .tools a {
@@ -100,3 +102,146 @@ main .container .tools i {
 .login form h1 {
     text-align: center;
 }
+
+
+.posts {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow: hidden;
+}
+
+
+.posts .post{
+    width: 100%;
+    border: 1px solid black;
+    margin-bottom: 30px;
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.posts .post .top{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    gap: 15px;
+}
+
+.posts .post .top img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+}
+
+
+.posts .post .bottom{
+    width: 100%;
+}
+
+.posts .post .bottom img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+.posts .post .bottom .post-tool{
+    display: flex;
+    justify-content: space-between;
+    font-size: x-large;
+}
+
+.posts .post .bottom .post-tool i {
+    cursor: pointer;
+}
+
+
+main .container .user-profile {
+    width: 100%;
+    height: 30%;
+    border: 2px solid black;
+     display: flex;
+     justify-content: space-between;
+     padding: 10px;
+}
+
+main .container .user-profile img {
+    
+    border-radius: 50%;
+
+}
+
+main .container .user-profile a {
+    text-decoration: none;
+    color: red;
+}
+
+
+main .container #posts {
+    text-align: center;
+    font-size: 1.3em;
+    border-bottom: 1px solid black;
+    margin-bottom: 5px;
+}
+
+
+
+.user-posts {
+    width: 100%;
+    height: 60%;
+    overflow-y: scroll;
+    /* overflow: hidden; */
+}
+
+
+.user-posts .post{
+    width: 100%;
+    border: 1px solid black;
+    margin-bottom: 30px;
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.user-posts .post .top{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    gap: 15px;
+}
+
+.user-posts .post .top img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+}
+
+
+.user-posts .post .bottom{
+    width: 100%;
+}
+
+.user-posts .post .bottom img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+.user-posts .post .bottom .post-tool{
+    display: flex;
+    justify-content: space-between;
+    font-size: x-large;
+}
+
+.user-posts .post .bottom .post-tool i {
+    cursor: pointer;
+}
+

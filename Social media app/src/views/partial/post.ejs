@@ -1,0 +1,24 @@
+
+
+<% for (const post of postData) { %>
+       <div class="post">
+            <div class="top">
+                <div class="profile">
+                    <img src="<%= post.author.avatar %>" alt="">
+                </div>
+                <h2><%= post.author.username %></h2>
+            </div>
+            <div class="bottom">
+                <img src="<%= post.media %>" alt="media">
+                <div class="post-tool">
+                    <div class="tool">
+                        <i class="ri-heart-line"></i>
+                        <i class="ri-chat-3-line"></i>
+                        <i class="ri-send-plane-fill"></i>
+                    </div>
+                    <i class="ri-bookmark-line"></i>
+                </div>
+                <p><%= post.caption %></p>
+            </div>
+       </div>
+<% } %>

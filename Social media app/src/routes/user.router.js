@@ -17,6 +17,7 @@ router.get("/login", userControllers.getLoginController)
 router.post("/login", userControllers.loginController)
 router.get("/register",userControllers.getRegisterController)
 router.post("/register",userControllers.registerController)
+router.get("/profile" , protectedRoute , userControllers.getProfileController)
 router.get("/logout",protectedRoute , userControllers.logoutController)
 
 

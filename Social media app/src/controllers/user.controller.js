@@ -3,6 +3,7 @@ const userModel = require("../models/user.model")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const config = require("../config/config")
+const postModel = require("../models/post.model")
 
 module.exports.getRegisterController = (req, res)=>{
     try {
@@ -137,6 +138,28 @@ module.exports.logoutController = async (req , res) => {
     }
 }
 
+
+module.exports.getProfileController = async (req , res) => {
+    try {
+        
+       const userId =  req.userId
+
+      const user = await userModel.findById(userId).select("-password")
+
+      const userPosts = await postModel.find({author : userId}).populate("author", "username avatar")
+
+      console.log(user);
+      
+      console.log(userPosts);
+
+      return res.render("userProfile", {user , userPosts})
+      
+
+    } catch (error) {
+        res.redirect("/user/login", {error : error.message})
+        
+    }
+}
 
 // module.exports = {
 //     registerController ,

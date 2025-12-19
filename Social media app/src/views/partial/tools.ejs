@@ -1,10 +1,13 @@
 <div class="tools">
-    <i class="ri-home-line"></i>
+    <a href="/"><i class="ri-home-line"></i></a>
     <i class="ri-search-line"></i>
     <a href="/post/createpost"> <i class="ri-add-circle-fill"></i></a>
     <i class="ri-message-2-fill"></i>
     <% if(user){ %>
-       <i class="ri-account-circle-fill"></i>
+        <a href="/user/profile">
+
+            <i class="ri-account-circle-fill"></i>
+        </a>
     <% }else { %>
         <a href="/user/login"><i class="ri-login-circle-fill"></i></a>
     <% } %>
