@@ -17,8 +17,7 @@ module.exports.indexController = async (req ,res)=>{
         }
         const postData = await postModel.find().populate("author", "username avatar")
 
-        console.log(postData);
-        
+      
         res.render('home' , {user , postData})
    } catch (error) {
           console.log(error);

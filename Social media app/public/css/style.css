@@ -107,8 +107,8 @@ main .container .tools i {
 .posts {
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
-    overflow: hidden;
+    overflow-y: auto;
+    /* overflow: hidden; */
 }
 
 
@@ -215,13 +215,35 @@ main .container #posts {
     height: 40px;
     display: flex;
     gap: 15px;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.user-posts .post .top img {
+.user-posts .post .top .profile{
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-posts .post .top .profile img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
 
+}
+
+
+.user-posts .post .top .btn {
+    display: flex;
+    gap: 1.1em;
+    
+}
+
+.user-posts .post .top .btn a {
+    text-decoration: none;  
+    color: black;
 }
 
 

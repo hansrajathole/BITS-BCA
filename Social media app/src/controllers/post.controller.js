@@ -2,7 +2,7 @@
 const imagekit = require("../services/imagekit.service")
 const postModel = require("../models/post.model")
 const { generateCaption} = require("../services/ai.service")
-
+const {ObjectId} = require("mongoose")
 
 module.exports.getCreatePostController = async (req, res) => {
     try {
@@ -61,4 +61,83 @@ module.exports.postCreateController = async (req , res) => {
         req.flash("error", error.message)
        return  res.redirect("/user/login")
     }
+}
+
+module.exports.deleteController = async (req , res) => {
+    try {
+        let postId =  req.params.postId
+        let userId = req.userId
+
+        let post = await postModel.findById(postId)
+
+        
+        let authorId = post.author 
+        
+       
+
+        if(authorId != userId ){
+            req.flash("error", "you are not authorized persion")
+            return res.redirect("/")
+        }
+
+
+       await postModel.findByIdAndDelete(postId)
+
+       req.flash("success", "post deleted successfully")
+
+       return res.redirect("/user/profile")
+
+
+    } catch (error) {
+       console.log(error);
+       return res.redirect("/user/login", {error : error.message})
+        
+    }
+}
+
+
+
+module.exports.getUpdateController = async (req , res) => {
+    try {
+       
+        
+       const postId =   req.params.postId
+     
+        const post = await postModel.findById(postId)
+
+
+        return res.render("postUpdate" , {post})
+    } catch (error) {
+        console.log(error);
+        req.flash("error", error.message)
+        res.redirect("/user/login")
+    }
+}
+
+
+module.exports.updateController = async (req , res) => {
+    try {
+        
+
+        let postId = req.params.postId
+        console.log(req.body);
+
+
+        let {caption} = req.body
+    
+        
+
+       await postModel.findByIdAndUpdate(postId, {
+            caption : caption
+        })
+
+
+        req.flash("success", "post update successfully")
+        return res.redirect("/user/profile")
+
+    } catch (error) {
+         console.log(error);
+        req.flash("error", error.message)
+        res.redirect("/user/login")
+    }   
 }

@@ -2,6 +2,12 @@
 
 <main>
   <div class="container">
+
+     <% if(success && success.length > 0 ){ %>
+             <div id="toast">
+                <%= success  %>
+               </div>
+        <% } %>
     <div class="user-profile">
       <img src="<%= user.avatar %>" alt="" />
       <h1><%= user.username %></h1>
@@ -14,8 +20,12 @@
         <div class="top">
           <div class="profile">
             <img src="<%= post.author.avatar %>" alt="" />
+            <h2><%= post.author.username %></h2>
           </div>
-          <h2><%= post.author.username %></h2>
+          <div class="btn">
+            <a href="/post/delete/<%= post._id %>"><i class="ri-close-large-fill"></i></a>
+            <a href="/post/update/<%= post._id %>"><i class="ri-edit-2-line"></i></a>
+          </div>
         </div>
         <div class="bottom">
           <img src="<%= post.media %>" alt="media" />

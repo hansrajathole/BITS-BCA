@@ -9,5 +9,8 @@ const router = express.Router()
 
 router.get("/createpost", protectedRoute , postControllers.getCreatePostController)
 router.post("/createpost",  protectedRoute ,upload.single("media") , postControllers.postCreateController)
+router.get("/delete/:postId" , protectedRoute , postControllers.deleteController)
+router.get("/update/:postId", protectedRoute, postControllers.getUpdateController)
+router.post("/update/:postId", protectedRoute, postControllers.updateController)
 
 module.exports = router

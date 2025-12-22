@@ -7,6 +7,11 @@
                 <%= success  %>
                </div>
         <% } %>
+        <% if(error && error.length > 0 ){ %>
+             <div id="error">
+                <%= error  %>
+               </div>
+        <% } %>
     <div class="posts">
         <%- include("partial/post.ejs" ,{postData}) %>
     </div>
