@@ -47,7 +47,12 @@ module.exports.registerController = async (req, res)=>{
         })
 
       
-        res.status(201).json({message : "user register successfully"})
+        let token = jwt.sign({
+            id : user._id,
+            email : user.email
+        }, config.JWT_SECRET)
+
+        res.status(201).json({message : `${role} register successfully` , token})
 
     } catch (error) {
         console.log(error);

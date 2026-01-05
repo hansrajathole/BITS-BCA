@@ -1,7 +1,13 @@
 import { RiSearchLine } from '@remixicon/react'
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
+
+  let navigate = useNavigate()
+
+
   return (
     <div className='h-16 w-full bg-[#FF7A30] flex justify-between items-center px-5'>
         <h1 className='text-xl font-bold text-white'>Shoppy</h1>
@@ -9,7 +15,10 @@ const Navbar = () => {
             <input type="text"  className='w-[95%] outline-0'/>
             <RiSearchLine />
         </div>
-        <button>Login</button>
+        {/* <Link to={"/login"}>Login</Link> */}
+        <button onClick={()=>{
+          navigate("/login")
+        }}>Login</button>
     </div>
   )
 }
