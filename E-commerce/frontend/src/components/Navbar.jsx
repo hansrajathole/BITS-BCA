@@ -7,6 +7,7 @@ const Navbar = () => {
 
   let navigate = useNavigate()
 
+  let token = localStorage.getItem("token")
 
   return (
     <div className='h-16 w-full bg-[#FF7A30] flex justify-between items-center px-5'>
@@ -15,10 +16,19 @@ const Navbar = () => {
             <input type="text"  className='w-[95%] outline-0'/>
             <RiSearchLine />
         </div>
-        {/* <Link to={"/login"}>Login</Link> */}
+
+        { token && <Link
+          to={"/product/create"}
+        className='bg-gray-800 py-1 px-2 text-[1.1em] text-white font-semibold rounded-md'>Create Product</Link>}
+
+        { token ? <button onClick={()=>{
+          localStorage.removeItem("token")
+          navigate("/login")
+        }}>Logout</button> : 
         <button onClick={()=>{
           navigate("/login")
-        }}>Login</button>
+        }}>Login</button>}
+        
     </div>
   )
 }

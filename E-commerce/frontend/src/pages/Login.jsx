@@ -15,7 +15,7 @@ const Login = () => {
     
             axios.post("http://localhost:3000/user/login", {email, password})
             .then((res)=>{
-                console.log(res.data);
+                
                 localStorage.setItem("token",res.data.token)
                 setemail("")
                 setpassword("")
@@ -25,7 +25,7 @@ const Login = () => {
     
             })
             .catch((error)=>{
-                console.log(error);
+                
                 seterror(error.response.data.message)
             })
     

@@ -21,6 +21,7 @@ module.exports.protectedRoute = async (req , res , next) => {
      
       }
 
+      req.user = user
       req.userId = decoded.id
 
       next()
