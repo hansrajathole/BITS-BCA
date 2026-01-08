@@ -26,3 +26,41 @@ module.exports.createController = async (req, res) => {
         
     }
 }
+
+module.exports.getAllProductController = async (req, res) => {
+    try {
+
+       const productData = await productModel.find()
+
+       if(productData.length < 1){
+            res.status(404).json({message : "product data not found"})
+       }
+
+       res.status(200).json({message : "product data found", productData})
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message : "internal server error"})
+    }
+}
+
+
+module.exports.productDetailController = async (req , res) => {
+    try {
+
+      const {productId} =  req.params
+
+      const product = await productModel.findById(productId)
+
+      if(!product){
+        res.status(404).json({message : "product not found"})
+      }
+        
+      res.status(200).json({message : "product data found" , product})
+
+      
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message : "internal server error" })
+    }
+}

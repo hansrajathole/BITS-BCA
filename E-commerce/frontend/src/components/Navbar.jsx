@@ -10,7 +10,7 @@ const Navbar = () => {
   let token = localStorage.getItem("token")
 
   return (
-    <div className='h-16 w-full bg-[#FF7A30] flex justify-between items-center px-5'>
+    <div className='h-16 z-10 w-full bg-[#FF7A30] flex justify-between items-center px-5 fixed top-0'>
         <h1 className='text-xl font-bold text-white'>Shoppy</h1>
         <div className='border w-[40%] py-1 px-2.5 rounded-2xl flex'>
             <input type="text"  className='w-[95%] outline-0'/>

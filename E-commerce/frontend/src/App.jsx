@@ -4,6 +4,8 @@ import { Routes , Route } from 'react-router-dom'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import CreateProduct from './pages/CreateProduct'
+import Home from './pages/Home'
+import ProductDetail from './pages/ProductDetail'
 
 
 const App = () => {
@@ -12,10 +14,11 @@ const App = () => {
       <Navbar/>
      
       <Routes>
-        <Route path='/' element={ <h1>Home Page</h1>}/>
+        <Route path='/' element={<Home/> }/>
         <Route path='/login' element={ <Login/> }/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/product/create' element={<CreateProduct/>}/>
+        <Route path='product/details/:productId' element={<ProductDetail/>}/>
       </Routes>
     </div>
   )
