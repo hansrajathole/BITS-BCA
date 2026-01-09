@@ -64,3 +64,51 @@ module.exports.productDetailController = async (req , res) => {
         res.status(500).json({message : "internal server error" })
     }
 }
+
+
+module.exports.updateController = async (req, res) => {
+    try {
+
+        let {productId} = req.params
+        let {title , description , image , price , category} = req.body
+
+        if(!title || !image || !price || !description || !category){
+            res.status(400).json({message : "All fields are Required"})
+         }
+
+         await productModel.findByIdAndUpdate(productId, {
+            title,
+            image,
+            price,
+            category,
+            description
+        })
+
+     
+        
+
+        res.status(200).json({message : "product updated successfully"})
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message : "internal server error" , error : error.message})
+        
+    }
+}
+
+
+module.exports.deleteController = async (req, res) => {
+    try {
+
+        const {productId} = req.params
+
+        await productModel.findByIdAndDelete(productId)
+
+        res.status(200).json({message : "product deleted successfully"})
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message : "internal server error" , error : error.message})
+         
+    }
+}

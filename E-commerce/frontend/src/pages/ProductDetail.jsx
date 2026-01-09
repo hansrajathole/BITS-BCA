@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 
 const ProductDetail = () => {
@@ -8,6 +8,7 @@ const ProductDetail = () => {
    const params = useParams()
 
    const productId = params.productId
+   const navigate = useNavigate()
    const token = localStorage.getItem("token")
    const [productDetail, setproductDetail] = useState({})
 
@@ -33,6 +34,24 @@ const ProductDetail = () => {
         })
    }
     
+
+   const deleteHandler = ()=>{
+        axios.delete(`http://localhost:3000/product/delete/${productId}`,{
+            headers : {
+                Authorization : `bearer ${token}`
+            }
+        })
+        .then((res)=>{
+            console.log(res);
+            navigate("/")
+            
+        })
+        .catch((err)=>{
+            console.log(err);
+            
+        })
+   }
+
   return (
     <div className='min-h-screen w-full flex justify-center items-center mt-16'>
         <div className="container h-[80vh] w-[80%] border rounded-2xl flex ">
@@ -47,8 +66,14 @@ const ProductDetail = () => {
                 <br />
                 <br />
                 <div className='btn flex w-full justify-between px-5'>
-                    <button className='border py-1 px-3 rounded font-semibold bg-blue-500 text-white'>Update</button>
-                    <button className='border py-1 px-3 rounded font-semibold bg-red-500 text-white'>Delete</button>
+                    <button
+                    onClick={()=>{
+                        navigate(`/product/update/${productDetail._id}`)
+                    }}
+                    className='border py-1 px-3 rounded font-semibold bg-blue-500 text-white'>Update</button>
+                    <button 
+                    onClick={deleteHandler}
+                    className='border py-1 px-3 rounded font-semibold bg-red-500 text-white'>Delete</button>
                 </div>
             </div>
         </div>
